@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo/provider/MyproviderLanguage.dart';
 import 'package:todo/shared/styles/colors.dart';
 
 class MyThemeData {
+
   static ThemeData lightTheme = ThemeData(
-      scaffoldBackgroundColor: mintgreen,
+      scaffoldBackgroundColor:mintgreen,
       colorScheme: ColorScheme(
           brightness: Brightness.light,
           primary: primaryColor,
@@ -26,7 +29,7 @@ class MyThemeData {
   static const Color darkprimary = Color(0xFF060E1E);
 
   static ThemeData darkTheme = ThemeData(
-      scaffoldBackgroundColor: mintgreen,
+      scaffoldBackgroundColor: Colors.black,
       colorScheme: ColorScheme(
           brightness: Brightness.dark,
           primary: primaryColor,
@@ -37,7 +40,7 @@ class MyThemeData {
           onError: Colors.white,
           background: darkprimary,
           onBackground:Colors.grey,
-          surface:darkprimary,
+          surface:primaryColor,
           onSurface: Colors.white),
 appBarTheme: AppBarTheme(iconTheme: IconThemeData(color: Colors.white)),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(

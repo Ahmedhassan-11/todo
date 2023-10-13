@@ -34,7 +34,8 @@ class _HomeLayoutState extends State<HomeLayout> {
           },
           child: Icon(Icons.add)),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
+        color: provider.theme==ThemeMode.light ?
+        Colors.white :Colors.black,
         shape: CircularNotchedRectangle(),
         notchMargin: 8,
         child: BottomNavigationBar(
