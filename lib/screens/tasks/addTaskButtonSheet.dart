@@ -1,5 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:todo/models/TaskModel.dart';
+import 'package:todo/shared/networks/firebase/firebase_manager.dart';
 import 'package:todo/shared/styles/colors.dart';
 
 class AddTaskBottomSheet extends StatefulWidget {
@@ -53,7 +56,8 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
             SizedBox(
               height: 10,
             ),
-            Text("Selected date", textAlign: TextAlign.start,
+            Text("Selected date",
+                textAlign: TextAlign.start,
                 style: GoogleFonts.poppins(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
@@ -65,35 +69,42 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
               onTap: () {
                 SelectDate(context);
               },
-              child: Text(SelectedDate.toString().substring(0,10), textAlign: TextAlign.center,
+              child: Text(SelectedDate.toString().substring(0, 10),
+                  textAlign: TextAlign.center,
                   style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w300,
-                      color: Colors.blue)),
+                      fontWeight: FontWeight.w300, color: Colors.blue)),
             ),
             SizedBox(
               height: 20,
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  TaskModel task = TaskModel(
+                      title: titleController.text,
+                      description: descriptionController.text,
+                      date: DateUtils.dateOnly(SelectedDate).millisecondsSinceEpoch);
+                  FirebaseManager.addTasks(task)
+                      .then((value) => {Navigator.pop(context)});
+                },
                 child: Text(
                   "add task",
+                  style: TextStyle(color: Colors.white, fontSize: 22),
                   textAlign: TextAlign.center,
                 ))
           ]),
     );
   }
 
-  SelectDate(BuildContext context) async{
-
-   DateTime? chosenDate = await showDatePicker(context: context,
+  SelectDate(BuildContext context) async {
+    DateTime? chosenDate = await showDatePicker(
+        context: context,
         initialDate: DateTime.now(),
         firstDate: DateTime.now(),
         lastDate: DateTime.now().add(Duration(days: 365)));
-   if (chosenDate==null){
-     return;
-   }
-   SelectedDate=chosenDate;
-   setState(() {
-   });
+    if (chosenDate == null) {
+      return;
+    }
+    SelectedDate = chosenDate;
+    setState(() {});
   }
 }

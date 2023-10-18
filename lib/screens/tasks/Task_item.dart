@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:todo/models/TaskModel.dart';
 
 class TaskItem extends StatelessWidget {
-  const TaskItem({super.key});
+  TaskModel task;
+   TaskItem(this.task,{super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +28,10 @@ class TaskItem extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("This is task one", style: TextStyle(fontSize: 18,
+                  Text(task.title, style: TextStyle(fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.blue)),
-                  Text("This is task description", style: TextStyle(fontSize: 14,
+                  Text(task.description, style: TextStyle(fontSize: 14,
                       fontWeight: FontWeight.w400,
                       color: Colors.black54)),
 
