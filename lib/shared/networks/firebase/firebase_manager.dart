@@ -33,4 +33,11 @@ class FirebaseManager {
   static Future<void> deleteTask(String taskId) {
    return getTasksCollection().doc(taskId).delete();
   }
+  static Edit ( TaskModel task){
+    getTasksCollection().doc(task.id).update({
+      "title":task.title,
+      "description":task.description,
+      "date":task.date,
+    });
+  }
 }

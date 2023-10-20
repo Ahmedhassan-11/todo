@@ -25,7 +25,7 @@ class _HomeLayoutState extends State<HomeLayout> {
       extendBody: true,
       appBar: AppBar(
         elevation: 0,
-        title: Text(AppLocalizations.of(context)!.todo),
+        title: Text(AppLocalizations.of(context)!.todo,style: TextStyle(color: Colors.white)),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(

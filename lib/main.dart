@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/layout/home_layout.dart';
 import 'package:todo/provider/MyproviderLanguage.dart';
+import 'package:todo/screens/tasks/edit%20task.dart';
 import 'package:todo/shared/styles/themes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
       initialRoute: HomeLayout.routeName,
       routes: {
         HomeLayout.routeName:(context) => HomeLayout(),
+        EditTask.routeName:(context) => EditTask(),
 
       },
       themeMode: provider.theme,
